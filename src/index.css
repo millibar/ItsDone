@@ -1,0 +1,339 @@
+/* button要素のスタイルリセット */
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+/* input要素のスタイルリセット */
+input,
+input:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+  color: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  max-width: 800px;
+  height: 100%;
+  margin: auto;
+  padding: 0;
+  position: relative;
+}
+
+/* Header */
+header {
+  margin: 0 0 14px;
+  padding: 0;
+  height: 44px;
+  box-shadow: 0 3px 4px #ccc;
+  background: #d6eaf3;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 44px;
+  font-size: 100%;
+  font-weight: normal;
+  text-align: center;
+}
+
+header button {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+}
+
+/* Task */
+.task {
+  margin: 0;
+  padding: 0x;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 25px 25px;
+  grid-template-areas:
+    'image title'
+    'image date';
+}
+
+.task > * {
+  outline: 0px solid red;
+}
+
+.task h1 {
+  grid-area: title;
+  font-size: 100%;
+  font-weight: normal;
+  margin: 0 0 0 8px;
+  padding: 0;
+  line-height: 25px;
+}
+
+.task input[type='text'] {
+  border-bottom: 2px solid #9ebcd5;
+  width: calc(100% - 16px);
+}
+
+.task input[type='text']::placeholder {
+  color: #ccc;
+}
+
+.task input[type='text']:focus {
+  border-bottom: 2px solid #5280a8;
+  width: calc(100% - 16px);
+}
+
+.task svg.icon {
+  grid-area: image;
+}
+
+.task p {
+  grid-area: date;
+  margin: 0 0 0 8px;
+  padding: 0;
+  font-size: 90%;
+  line-height: 25px;
+  color: #777;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.edit-task {
+  box-sizing: border-box;
+  position: absolute;
+  width: calc(100% - 24px);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 18px 14px;
+  box-shadow: 0 3px 4px #999;
+  border-radius: 8px;
+  background: #fff;
+  z-index: 20;
+}
+
+.edit-task h2 {
+  margin: 14px 0 0;
+  padding: 0;
+  font-size: 90%;
+  font-weight: normal;
+  color: #666;
+}
+
+.edit-task > * {
+  outline: 0px solid red;
+}
+
+.edit-task button.update {
+  position: absolute;
+  font-size: 26px;
+  width: 44px;
+  height: 44px;
+  top: -2px;
+  right: -2px;
+  color: #666;
+}
+
+.icon-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.icon-list li {
+  margin: 0 6px 6px 0;
+  padding: 0;
+}
+
+.icon {
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+  margin: 0;
+  /*border: 1px solid #ccc;
+  border-radius: 8px;*/
+  display: block;
+  font-size: 10px;
+  color: #bbb;
+  text-align: center;
+}
+
+.icon-list .icon {
+  opacity: 0.4;
+}
+
+.icon-list .selected .icon {
+  opacity: 1;
+}
+
+.color-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.color-list li {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  margin: 0 6px 0 0;
+}
+
+.color-list input[type='radio'] {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 0;
+}
+
+.color-list label {
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.color-list input[type='radio']:checked + label {
+  transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Card */
+.card {
+  margin: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 3px #aaa;
+  display: grid;
+  grid-template-columns: 1fr 40px 44px;
+  grid-template-areas: 'task button1 button2';
+}
+
+.card > * {
+  outline: 0px solid red;
+}
+
+.card .task {
+  grid-area: task;
+}
+
+.card button.done {
+  grid-area: button2;
+  width: 44px;
+  height: 50px;
+}
+
+.card button.edit {
+  grid-area: button1;
+  width: 40px;
+  height: 50px;
+}
+
+.card button.delete {
+  grid-area: button2;
+  width: 40px;
+  height: 50px;
+  margin-left: 4px;
+}
+
+.card button svg {
+  padding: 8px;
+}
+
+.card button.done svg {
+  filter: drop-shadow(1px 1px 1px #aaa);
+}
+
+/* AlertDialog */
+.alert-dialog {
+  width: 300px;
+  padding: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0 3px 4px #999;
+  border-radius: 8px;
+  position: absolute;
+  background: #fff;
+  z-index: 20;
+}
+
+.alert-dialog p {
+  margin: 0 0 1em;
+  padding: 0;
+}
+
+button.destruction {
+  background: rgb(218, 107, 107);
+  color: #fff;
+  border: 1px solid rgb(218, 107, 107);
+  border-radius: 8px;
+  padding: 4px;
+  width: 48%;
+  float: left;
+}
+
+button.cancel {
+  background: #fff;
+  color: #2171d9;
+  border: 1px solid #2171d9;
+  border-radius: 8px;
+  padding: 4px;
+  width: 48%;
+  float: right;
+}
